@@ -1,0 +1,117 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Mono:ital,wght@0,100..700;1,100..700&display=swap');
+
+    body.tema-claro{
+transform: 2.0s;
+transition-duration: 0.5s;
+transition: 0.5s;
+    --body: rgb(36, 31, 31);
+    --blue: #5d83ec;
+    --header: rgb(89, 87, 87);
+    --letras:white;
+
+}
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body{
+   /* font-family: Arial, sans-serif;*/
+   font-family: "Roboto Mono", monospace;
+    background-color: #f4f4f4;
+    color: #222;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    animation: aparecer 0.8s ease-in-out;
+
+     /*parte alterada do codigo original*/
+     animation-delay: 0.0ms;
+    animation-duration: 1.0ms;
+}
+
+@keyframes aparecer{
+    from{
+        opacity: 0;
+        transform: translateY(15px);
+    }
+    to{
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.container{
+   display: flex; 
+    max-width: 80rem;
+    max-height: 80rem;
+    margin: 0 auto;
+    padding: 20px;
+   
+}
+
+
+.header{
+    background-color: white;
+    border-bottom: 1px solid #ddd;
+}
+
+.header-conteudo{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo{
+    font-size: 24px;
+}
+
+.logo span{
+    color: #5d83ec;
+}
+
+.menu a{
+    text-decoration: none;
+    color: #555;
+    margin-left: 20px;
+    transition: 0.3s;
+}
+
+.menu a:hover{
+    
+    color: #5d83ec;
+}
+
+.container{
+    display:flex;
+    height: 20px;
+}
+
+.footer{
+    /*tem nada ainda nessa bosta, sei nem porque do css*/
+    margin-top: auto;
+    background-color: rgb(255, 255, 255);
+    border-top: 1px solid #ddd;
+    text-align: center;
+    padding: 15px;
+}
+.botaoTema{
+    color: white;
+    width: 45px;
+    height: 45px;
+    border-radius: 20%;
+    border: none;
+    background-color: #5d83ec;
+    cursor: pointer;
+    align-items: center;
+    justify-content: center;
+    transition: 0.3s;
+}
+
+.botaoTema:hover{
+    transform: scale(1.1);
+    background-color: #5d83ec;
+    box-shadow: 2px 3px 3.4px rgb(131, 131, 131)
+}
+

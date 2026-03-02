@@ -1,0 +1,237 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Mono:ital,wght@0,100..700;1,100..700&display=swap');
+
+body.tema-claro{
+transform: 2.0s;
+transition-duration: 0.5s;
+transition: 0.5s;
+    --body: rgb(36, 31, 31);
+    --blue: #5d83ec;
+    --header: rgb(89, 87, 87);
+    --letras:white;
+}
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body{
+   /* font-family: Arial, sans-serif;*/
+   transform: 2s;
+   transition: 0.5s;
+   transition-duration: 0.5s;
+   font-family: "Roboto Mono", monospace;
+    background-color: var(--body);
+    color: var(--letras);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    animation: aparecer 0.8s ease-in-out;
+
+     /*parte alterada do codigo original*/
+     animation-delay: 0.0ms;
+    animation-duration: 1.0ms;
+}
+
+@keyframes aparecer{
+    from{
+        opacity: 0;
+        transform: translateY(15px);
+    }
+    to{
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.container{
+    display: flex;
+    max-width: 80rem;
+    max-height: 100rem;
+    margin: 0 auto;
+    padding: 20px;
+   
+}
+
+
+.header{
+    background-color:var(--header);
+    border-bottom: 1px solid #ddd;
+}
+
+.header-conteudo{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo{
+    font-size: 24px;
+}
+
+.logo span{
+    color: #5d83ec;
+}
+
+.menu a{
+    text-decoration: none;
+    color:var(--letras);
+    margin-left: 20px;
+    transition: 0.3s;
+}
+
+.menu a:hover{
+    
+    color: #5d83ec;
+}
+
+.pesquisa-section{
+    display: flex;
+    justify-content: center;
+    margin: 40px 0;
+}
+
+.pesquisa-conteudo{
+    display: flex;
+    gap: 10px;
+}
+
+.pesquisa-conteudo input{
+    width: 300px;
+    padding: 10px 15px;
+    border-radius: 25px;
+    border: 1px solid #ccc;
+    outline: none;
+    transition: 0.3s;
+}
+
+.pesquisa-conteudo input:focus{
+    border-color: #5d83ec;
+    box-shadow: 0 0 5px rgba(37,99,235,0.3);
+    transform: scale(1.1);
+    transform: scaleX(1.1);
+    box-shadow: 2px 3px 3.4px rgb(131, 131, 131);
+}
+
+.pesquisa-button{
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    border: none;
+    background-color: #5d83ec;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: 0.3s;
+}
+
+.pesquisa-button img{
+    width: 18px;
+    filter: brightness(0) invert(1);
+}
+
+.pesquisa-button:hover{
+    transform: scale(1.1);
+    background-color: #5d83ec;
+    box-shadow: 2px 3px 3.4px rgb(131, 131, 131)
+}
+
+#filmesGrid{
+    display:grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1rem;
+   
+}
+
+
+.card{
+    /*parte textual*/
+    height: 550px;
+    display:flex;
+    flex-direction: column;
+    justify-content: space-between;
+    font-size:small; /*achei melhor no meu monitor, sujeito a alterações*/
+    text-align: center;
+    overflow: hidden;/*esconde o texto excessivo*/
+
+/*parte do button*/
+    border-radius: 10px;
+    border-color: whitesmoke; /*puramente para ter um aspecto redondo. não consegui retirar a borda e manter o redondinho*/
+    cursor:pointer;
+    box-shadow: 0 2px 5px black;
+    transition: 0.5s; /*aquela subidinha legal*/
+    background-color: var(--header);
+}
+
+.card:hover{
+    /*para quando o mouse passar encima do card*/
+    transform: scale(1.03);
+    box-shadow: 1px 4px 10px black;
+}
+
+.fade-out{
+    opacity: 0;
+    transform: translateY(10px);
+    transition: opacity 0.3s ease, transform 0.3s ease
+}
+.fade-in{
+    opacity: 1;
+    transform: translateY(0);
+    transition: opacity 0.3s ease, transform 0.3s ease
+}
+
+
+.footer{
+    /*tem nada ainda nessa bosta, sei nem porque do css*/
+    margin-top: auto;
+    background-color: var(--header);
+    border-top: 1px solid #ddd;
+    text-align: center;
+    padding: 15px;
+}
+
+.botaoTema{
+    color: white;
+    width: 45px;
+    height: 45px;
+    border-radius: 20%;
+    border: none;
+    background-color: #5d83ec;
+    cursor: pointer;
+    align-items: center;
+    justify-content: center;
+    transition: 0.3s;
+}
+
+.botaoTema:hover{
+    transform: scale(1.1);
+    background-color: #5d83ec;
+    box-shadow: 2px 3px 3.4px rgb(131, 131, 131)
+}
+
+.detalhes-card {
+    display: flex;
+    gap: 30px;
+    align-items: flex-start;
+    margin-top: 30px;
+}
+
+.detalhes-card img {
+    width: 300px;
+    height: auto;
+    border-radius: 8px;
+    transition: 2s;
+}
+
+.detalhes-card img:hover{
+    transform: scale(1.1);
+    box-shadow: 6px 6px 6px rgb(131, 131, 131)
+}
+
+.detalhes-info {
+    max-width: 600px;
+}
+.linha{
+        border-bottom: 1px solid #ddd;
+        width: 80%;
+}

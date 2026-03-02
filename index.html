@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="css/style.css">
+    <script src="js/main.js" defer></script>
+    <title>Supermidia - Catalogo</title>
+</head>
+<body>
+    <div class="loader" id="loader">
+        <div class="spinner"></div>
+        <p>Aguarde, carregando informaçoes...</p>
+    </div>
+    <header class="header">
+        <div class="container header-conteudo">
+            <h1 class="logo"><span>Lista de Filmes</span></h1>
+            <nav class="menu">
+                <button
+                class="botaoTema"
+                id="botaoTema">Tema</button>
+                <a href="#" id="inicio">Inicio</a>
+                <a href="#" id="filmes">Filmes</a>
+                <a href="#" id="series">Series</a>
+            </nav>
+        </div>
+    </header>
+    <main>
+        <section class="pesquisa-section">
+            <div class="container pesquisa-conteudo">
+                <input type="text" placeholder="pesquisar por filme" id="campoPesquisa">
+                <br>
+                <button class="pesquisa-button" id="botaoPesquisa">
+                    <img src="imagens/2319177.png" alt="pesquisar">
+                </button>
+            </div>
+        </section>
+        <section class="exibeFilme-section">
+            <div class="filmesGrid" id="filmesGrid"></div>
+        </section>
+    </main>
+    <footer class="footer">
+        <p> Deus sobre tudo e todos </p>
+    </footer>
+</body>
+</html>
