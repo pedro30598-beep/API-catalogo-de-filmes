@@ -12,7 +12,7 @@ const series = document.getElementById("series");
 
 const botaoTema = document.getElementById("botaoTema");
 botaoTema.addEventListener("click", () =>{
-    document.body.classList.toggle("tema-claro");
+    document.body.classList.toggle("tema-escuro");
 });
 
 async function requisicaoURL(url) {
@@ -62,7 +62,9 @@ function renderizarMidia(listaMidia) {
         if (filme.title) {
             card.innerHTML = `
                 <img src="${imagem}" alt="${filme.title}">
+                <br>
                 <h3>${filme.title}</h3>
+                <br>
                 <p>
                     Nota: ${filme.vote_average}<br>
                     ${filme.overview}<br>
@@ -72,7 +74,9 @@ function renderizarMidia(listaMidia) {
         } else {
             card.innerHTML = `
                 <img src="${imagem}" alt="${filme.name}">
+                <br>
                 <h3>${filme.name}</h3>
+                <br>
                 <p>
                     Nota: ${filme.vote_average}<br>
                     ${filme.overview}<br>

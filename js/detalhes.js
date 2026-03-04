@@ -4,13 +4,14 @@ const IMAGE_URL = "https://image.tmdb.org/t/t/p/w500";
 
 const detalhesContainer = document.getElementById ("detalhesContainer");
 
+
 const params = new URLSearchParams(window.location.search);
 const id = params.get("id");
 const type = params.get("type");
 
 const botaoTema = document.getElementById("botaoTema");
 botaoTema.addEventListener("click", () =>{
-    document.body.classList.toggle("tema-claro");
+    document.body.classList.toggle("tema-escuro");
 });
 
 

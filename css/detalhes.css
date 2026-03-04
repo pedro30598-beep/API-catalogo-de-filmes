@@ -1,16 +1,21 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto+Mono:ital,wght@0,100..700;1,100..700&display=swap');
-
-    body.tema-claro{
+:root{
+    --body: rgb(255, 255, 255);
+    --blue: rgb(95, 133, 236);
+    --header: rgb(255, 255, 255);
+    --letras: rgb(0, 0, 0);
+    --linha: rgb(221, 221, 221);
+}
+body.tema-escuro{
 transform: 2.0s;
 transition-duration: 0.5s;
 transition: 0.5s;
-    --body: rgb(36, 31, 31);
-    --blue: #5d83ec;
-    --header: rgb(89, 87, 87);
+    --body: rgb(1, 11, 20);
+    --blue: rgb(95, 133, 236);
+    --header: rgb(16, 18, 20);
     --letras:white;
-
+    --linha: rgb(54, 54, 54);
 }
-
 *{
     margin: 0;
     padding: 0;
@@ -18,7 +23,7 @@ transition: 0.5s;
 }
 body{
    /* font-family: Arial, sans-serif;*/
-   font-family: "Roboto Mono", monospace;
+   font-family: 'Poppins', sans-serif;
     background-color: #f4f4f4;
     color: #222;
     min-height: 100vh;

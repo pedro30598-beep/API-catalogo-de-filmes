@@ -1,13 +1,20 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto+Mono:ital,wght@0,100..700;1,100..700&display=swap');
-
-body.tema-claro{
+:root{
+    --body: rgb(255, 255, 255);
+    --blue: rgb(95, 133, 236);
+    --header: rgb(255, 255, 255);
+    --letras: rgb(0, 0, 0);
+    --linha: rgb(221, 221, 221);
+}
+body.tema-escuro{
 transform: 2.0s;
 transition-duration: 0.5s;
 transition: 0.5s;
-    --body: rgb(36, 31, 31);
-    --blue: #5d83ec;
-    --header: rgb(89, 87, 87);
+    --body: rgb(1, 11, 20);
+    --blue: rgb(95, 133, 236);
+    --header: rgb(16, 18, 20);
     --letras:white;
+    --linha: rgb(54, 54, 54);
 }
 *{
     margin: 0;
@@ -15,19 +22,16 @@ transition: 0.5s;
     box-sizing: border-box;
 }
 body{
-   /* font-family: Arial, sans-serif;*/
    transform: 2s;
    transition: 0.5s;
    transition-duration: 0.5s;
-   font-family: "Roboto Mono", monospace;
+   font-family: 'Poppins', sans-serif;
     background-color: var(--body);
     color: var(--letras);
     min-height: 100vh;
     display: flex;
     flex-direction: column;
     animation: aparecer 0.8s ease-in-out;
-
-     /*parte alterada do codigo original*/
      animation-delay: 0.0ms;
     animation-duration: 1.0ms;
 }
@@ -45,19 +49,30 @@ body{
 
 .container{
     display: flex;
-    max-width: 80rem;
+    max-width: 110rem;
     max-height: 100rem;
     margin: 0 auto;
-    padding: 20px;
+    padding: 10px;
    
 }
 
+.logo{
 
-.header{
-    background-color:var(--header);
-    border-bottom: 1px solid #ddd;
+height: 40px;
+width: 100x;
 }
 
+.header{
+    z-index: 1000;
+    position: fixed;
+    width: 95%;
+    align-self: center;
+    border-radius: 0 0 20px 20px;
+    animation: aparecer 0.8s ease-in-out;
+    background: rgba(121, 121, 121, 0.247);
+    backdrop-filter: blur(40px);
+    -webkit-backdrop-filter: blur(40px);
+}
 .header-conteudo{
     display: flex;
     justify-content: space-between;
@@ -84,10 +99,29 @@ body{
     color: #5d83ec;
 }
 
+.intro-titulo{
+    color: rgb(95, 133, 236);
+    
+}
+
+.intro{
+    z-index: 1000;
+    margin: 0 auto;
+    max-width: 92%;
+    margin-top: 25rem;
+    margin-bottom: 3rem;
+}
+
 .pesquisa-section{
+    margin: 0 auto;
+    max-width: 95%;
+    margin-bottom: 15rem;
+    
+}
+
+.campoPesquisa{
     display: flex;
-    justify-content: center;
-    margin: 40px 0;
+    justify-content: flex-start;
 }
 
 .pesquisa-conteudo{
@@ -96,26 +130,33 @@ body{
 }
 
 .pesquisa-conteudo input{
+    height: 55px;
     width: 300px;
     padding: 10px 15px;
-    border-radius: 25px;
+    border-radius: 10px;
     border: 1px solid #ccc;
     outline: none;
     transition: 0.3s;
+    
 }
-
+.pesquisa-conteudo input:hover{
+    filter:brightness(80%);
+    border-color: #5d83ec;
+    box-shadow: 0 0 5px rgba(37,99,235,0.3);
+}
 .pesquisa-conteudo input:focus{
+    filter: brightness(80%);
     border-color: #5d83ec;
     box-shadow: 0 0 5px rgba(37,99,235,0.3);
     transform: scale(1.1);
     transform: scaleX(1.1);
-    box-shadow: 2px 3px 3.4px rgb(131, 131, 131);
+    box-shadow: 2px 3px 3.4px rgb(73, 73, 73);
 }
 
 .pesquisa-button{
-    width: 45px;
-    height: 45px;
-    border-radius: 50%;
+    width: 55px;
+    height: 55px;
+    border-radius: 10px;
     border: none;
     background-color: #5d83ec;
     cursor: pointer;
@@ -131,21 +172,23 @@ body{
 }
 
 .pesquisa-button:hover{
+    filter: brightness(80%);
     transform: scale(1.1);
     background-color: #5d83ec;
     box-shadow: 2px 3px 3.4px rgb(131, 131, 131)
 }
 
 #filmesGrid{
+    margin: 0 auto;
+    width: 95%;
     display:grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    gap: 1rem;
-   
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
 }
-
 
 .card{
     /*parte textual*/
+    
     height: 550px;
     display:flex;
     flex-direction: column;
@@ -165,7 +208,7 @@ body{
 
 .card:hover{
     /*para quando o mouse passar encima do card*/
-    transform: scale(1.03);
+    transform: scale(1.3);
     box-shadow: 1px 4px 10px black;
 }
 
@@ -180,16 +223,45 @@ body{
     transition: opacity 0.3s ease, transform 0.3s ease
 }
 
-
 .footer{
-    /*tem nada ainda nessa bosta, sei nem porque do css*/
-    margin-top: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     background-color: var(--header);
-    border-top: 1px solid #ddd;
-    text-align: center;
-    padding: 15px;
+    animation: aparecer 0.8s ease-in-out;
+    animation-delay: 0.0ms;
+    padding: 40px 0;
+    margin-top: auto;
 }
 
+.footer-conteudo{
+    
+    width: 90%;
+    margin: 0 auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column; 
+    text-align: center;
+}
+
+.footer-links{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 30px;
+    margin-top: 15px;
+}
+
+.footer-links a{
+    text-decoration: none;
+    color: var(--letras);
+    transition: 0.3s;
+}
+
+.footer-links a:hover{
+    color: var(--blue);
+}
 .botaoTema{
     color: white;
     width: 45px;
@@ -213,7 +285,7 @@ body{
     display: flex;
     gap: 30px;
     align-items: flex-start;
-    margin-top: 30px;
+    margin-top:15rem;
 }
 
 .detalhes-card img {
@@ -232,6 +304,49 @@ body{
     max-width: 600px;
 }
 .linha{
-        border-bottom: 1px solid #ddd;
-        width: 80%;
+    border-bottom: 1px solid #ddd;
+    width: 80%;
+}
+.linhatitulo{
+    border-bottom: 1px solid var(--linha);
+    width: 50%;
+    margin-left: 0;
+}
+.linhafooter{
+    border-bottom: 1px solid var(--linha);
+    width: 100%;
+    margin-top: 20px;
+}
+
+.loader {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(1, 11, 20, 0.9); /* fundo escuro semi-transparente */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+    color: white;
+    font-size: 1.2rem;
+    opacity: 1;
+    transition: opacity 0.5s ease;
+}
+
+.spinner {
+    border: 5px solid #ccc;
+    border-top: 5px solid #5d83ec;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    animation: girar 1s linear infinite;
+    margin-bottom: 15px;
+}
+
+@keyframes girar {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
 }
