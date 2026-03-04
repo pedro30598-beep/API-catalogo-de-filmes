@@ -9,10 +9,7 @@ const params = new URLSearchParams(window.location.search);
 const id = params.get("id");
 const type = params.get("type");
 
-const botaoTema = document.getElementById("botaoTema");
-botaoTema.addEventListener("click", () =>{
-    document.body.classList.toggle("tema-escuro");
-});
+
 
 
 async function carregarDetalhes() {
@@ -58,3 +55,16 @@ function renderizarDetalhes(item) {
     `;
 }
 document.addEventListener("DOMContentLoaded",  carregarDetalhes);
+
+window.addEventListener("load", function () {
+    const loader = document.getElementById("loader");
+
+    if (loader) {
+        loader.style.transition = "opacity 0.5s ease";
+        loader.style.opacity = "0";
+
+        setTimeout(() => {
+            loader.style.display = "none";
+        }, 500);
+    }
+});

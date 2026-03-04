@@ -57,7 +57,6 @@ body{
 }
 
 .logo{
-
 height: 40px;
 width: 100x;
 }
@@ -108,14 +107,13 @@ width: 100x;
     z-index: 1000;
     margin: 0 auto;
     max-width: 92%;
-    margin-top: 25rem;
-    margin-bottom: 3rem;
+    margin-top: 13rem;
 }
 
 .pesquisa-section{
     margin: 0 auto;
     max-width: 95%;
-    margin-bottom: 15rem;
+    margin-bottom: 4rem;
     
 }
 
@@ -178,6 +176,34 @@ width: 100x;
     box-shadow: 2px 3px 3.4px rgb(131, 131, 131)
 }
 
+.seta-container {
+  width: 100%;
+    margin-top: 200px;
+    margin-bottom: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: none;
+}
+
+.seta {
+    background: transparent;
+    width: 10px;
+    height: 10px;
+    border-left: none;
+    border-top: none;
+    background: transparent;
+    transform: rotate(-45deg);
+    animation: sobeDesce 1.5s ease-in-out infinite;
+    box-shadow: 0px 0px 2px 2px var(--blue)
+}
+
+@keyframes sobeDesce {
+    0% { transform: translateX(-50%) translateY(0) rotate(45deg); }
+    50% { transform: translateX(-50%) translateY(10px) rotate(45deg); }
+    100% { transform: translateX(-50%) translateY(0) rotate(45deg); }
+}
+
 #filmesGrid{
     margin: 0 auto;
     width: 95%;
@@ -195,7 +221,7 @@ width: 100x;
     justify-content: space-between;
     font-size:small; /*achei melhor no meu monitor, sujeito a alterações*/
     text-align: center;
-    overflow: hidden;/*esconde o texto excessivo*/
+    overflow: hidden;
 
 /*parte do button*/
     border-radius: 10px;

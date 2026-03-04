@@ -16,12 +16,7 @@ document.addEventListener("DOMContentLoaded", function(){
         document.body.classList.add("tema-claro");
     }
     });
-    const botaoTema= document.getElementById("botaoTema");
-    botaoTema.addEventListener("click", () =>  {
-        document.body.classList.toggle("tema-claro");
-        const temaAtual = document.body.classList.contains
-        ("tema-claro")
-            ?"claro"
-            :"escuro";
-            localStorage.setItem("tema", temaAtual);
-    });
+const botaoTema = document.getElementById("botaoTema");
+botaoTema.addEventListener("click", () =>{
+    document.body.classList.toggle("tema-escuro");
+});
