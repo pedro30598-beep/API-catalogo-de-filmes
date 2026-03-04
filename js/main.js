@@ -8,10 +8,12 @@ const filmesGrid = document.getElementById("filmesGrid");
 const inicio = document.getElementById("inicio");
 const filmes = document.getElementById("filmes");
 const series = document.getElementById("series");
-
+const params = new URLSearchParams(window.location.search);
+const tipo = params.get("tipo");
 
 const botaoTema = document.getElementById("botaoTema");
-botaoTema.addEventListener("click", () =>{
+
+botaoTema.addEventListener("click", () => {
     document.body.classList.toggle("tema-escuro");
 });
 
@@ -20,6 +22,7 @@ async function requisicaoURL(url) {
         filmesGrid.classList.add("fade-out");
 
         const response = await fetch(url);
+
         if (!response.ok) {
             throw new Error("Erro na requisição");
         }
@@ -41,6 +44,111 @@ async function requisicaoURL(url) {
         console.error("Erro", error);
         filmesGrid.innerHTML = '<p>Erro ao carregar filmes</p>';
     }
+}
+
+async function carregarGeneros(tipo = "movie") {
+    const response = await fetch(
+        `${BASE_URL}/genre/${tipo}/list?api_key=${API_KEY}&language=pt-BR`
+    );
+
+    const data = await response.json();
+    const select = document.getElementById("filtroGenero");
+
+    select.innerHTML = `<option value="">Gêneros</option>`;
+
+    data.genres.forEach(genero => {
+        const option = document.createElement("option");
+        option.value = genero.id;
+        option.textContent = genero.name;
+        select.appendChild(option);
+    });
+}
+
+function filtrarPorGenero() {
+    const generoId = document.getElementById("filtroGenero").value;
+
+    if (!generoId) {
+        carregarTendenciasGeral();
+        return;
+    }
+
+    let endpoint = "movie";
+
+    if (tipo === "serie") {
+        endpoint = "tv";
+    }
+
+    const url = `${BASE_URL}/discover/${endpoint}?api_key=${API_KEY}&with_genres=${generoId}&language=pt-BR`;
+    requisicaoURL(url);
+}
+
+function carregarAnos() {
+    const selectAno = document.getElementById("filtroAno");
+    const anoAtual = new Date().getFullYear();
+
+    for (let ano = anoAtual; ano >= 1950; ano--) {
+        const option = document.createElement("option");
+        option.value = ano;
+        option.textContent = ano;
+        selectAno.appendChild(option);
+    }
+}
+
+function filtrarPorAno() {
+    const ano = document.getElementById("filtroAno").value;
+
+    if (!ano) {
+        carregarTendenciasGeral();
+        return;
+    }
+
+    let endpoint = "movie";
+
+    if (tipo === "serie") {
+        endpoint = "tv";
+    }
+
+    const url = `${BASE_URL}/discover/${endpoint}?api_key=${API_KEY}&language=pt-BR&primary_release_year=${ano}`;
+    requisicaoURL(url);
+}
+
+function filtrarPorNota() {
+    const nota = document.getElementById("filtroNota").value;
+
+    if (!nota) {
+        carregarTendenciasGeral();
+        return;
+    }
+
+    let endpoint = "movie";
+
+    if (tipo === "serie") {
+        endpoint = "tv";
+    }
+
+    const url = `${BASE_URL}/discover/${endpoint}?api_key=${API_KEY}&language=pt-BR&vote_average.gte=${nota}`;
+    requisicaoURL(url);
+}
+
+function filtrarPorPais() {
+    const pais = document.getElementById("filtroPais").value;
+
+    if (!pais) {
+        carregarTendenciasGeral();
+        return;
+    }
+
+    const params = new URLSearchParams(window.location.search);
+    const tipo = params.get("tipo");
+
+    let endpoint = "movie";
+
+    if (tipo === "serie") {
+        endpoint = "tv";
+    }
+
+    const url = `${BASE_URL}/discover/${endpoint}?api_key=${API_KEY}&language=pt-BR&with_origin_country=${pais}`;
+    requisicaoURL(url);
 }
 
 function renderizarMidia(listaMidia) {
@@ -140,16 +248,33 @@ series.addEventListener("click", buscarSerie);
 
 /* LOADER */
 
-document.addEventListener("DOMContentLoaded", () =>{
+document.addEventListener("DOMContentLoaded", () => {
     const params = new URLSearchParams(window.location.search);
     const tipo = params.get("tipo");
-    if (tipo === "filme"){
+
+    if (tipo === "filme") {
         buscarFilme();
-    } else if (tipo === "series"){
+    } else if (tipo === "series") {
         buscarSerie();
     } else {
         carregarTendenciasGeral();
     }
+
+    carregarGeneros();
+
+    document.getElementById("filtroGenero")
+        .addEventListener("change", filtrarPorGenero);
+
+    carregarAnos();
+
+    document.getElementById("filtroAno")
+        .addEventListener("change", filtrarPorAno);
+
+    document.getElementById("filtroNota")
+        .addEventListener("change", filtrarPorNota);
+
+    document.getElementById("filtroPais")
+        .addEventListener("change", filtrarPorPais);
 });
 
 window.addEventListener("load", function () {

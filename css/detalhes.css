@@ -1,29 +1,33 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto+Mono:ital,wght@0,100..700;1,100..700&display=swap');
-:root{
+
+:root {
     --body: rgb(255, 255, 255);
     --blue: rgb(95, 133, 236);
     --header: rgb(255, 255, 255);
     --letras: rgb(0, 0, 0);
     --linha: rgb(221, 221, 221);
 }
-body.tema-escuro{
-transform: 2.0s;
-transition-duration: 0.5s;
-transition: 0.5s;
+
+body.tema-escuro {
+    transform: 2.0s;
+    transition-duration: 0.5s;
+    transition: 0.5s;
     --body: rgb(1, 11, 20);
     --blue: rgb(95, 133, 236);
     --header: rgb(16, 18, 20);
-    --letras:white;
+    --letras: white;
     --linha: rgb(54, 54, 54);
 }
-*{
+
+* {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
-body{
-   /* font-family: Arial, sans-serif;*/
-   font-family: 'Poppins', sans-serif;
+
+body {
+    /* font-family: Poppins, sans-serif;*/
+    font-family: 'Poppins', sans-serif;
     background-color: #f4f4f4;
     color: #222;
     min-height: 100vh;
@@ -31,69 +35,66 @@ body{
     flex-direction: column;
     animation: aparecer 0.8s ease-in-out;
 
-     /*parte alterada do codigo original*/
-     animation-delay: 0.0ms;
+    /*parte alterada do codigo original*/
+    animation-delay: 0.0ms;
     animation-duration: 1.0ms;
 }
 
-@keyframes aparecer{
-    from{
+@keyframes aparecer {
+    from {
         opacity: 0;
         transform: translateY(15px);
     }
-    to{
+    to {
         opacity: 1;
         transform: translateY(0);
     }
 }
 
-.container{
-   display: flex; 
+.container {
+    display: flex;
     max-width: 80rem;
     max-height: 80rem;
     margin: 0 auto;
     padding: 20px;
-   
 }
 
-
-.header{
+.header {
     background-color: white;
     border-bottom: 1px solid #ddd;
 }
 
-.header-conteudo{
+.header-conteudo {
     display: flex;
     justify-content: space-between;
     align-items: center;
 }
 
-.logo{
+.logo {
     font-size: 24px;
 }
 
-.logo span{
+.logo span {
     color: #5d83ec;
 }
 
-.menu a{
+.menu a {
     text-decoration: none;
     color: #555;
     margin-left: 20px;
     transition: 0.3s;
 }
 
-.menu a:hover{
-    
+.menu a:hover {
     color: #5d83ec;
 }
 
-.container{
-    display:flex;
+.container {
+    display: flex;
     height: 20px;
 }
 
-.footer{
+.footer {
     /*tem nada ainda nessa bosta, sei nem porque do css*/
     margin-top: auto;
     background-color: rgb(255, 255, 255);
@@ -101,7 +102,8 @@ body{
     text-align: center;
     padding: 15px;
 }
-.botaoTema{
+
+.botaoTema {
     color: white;
     width: 45px;
     height: 45px;
@@ -114,9 +116,8 @@ body{
     transition: 0.3s;
 }
 
-.botaoTema:hover{
+.botaoTema:hover {
     transform: scale(1.1);
     background-color: #5d83ec;
     box-shadow: 2px 3px 3.4px rgb(131, 131, 131)
 }
-
