@@ -65,21 +65,7 @@ async function carregarGeneros(tipo = "movie") {
 }
 
 function filtrarPorGenero() {
-    const generoId = document.getElementById("filtroGenero").value;
-
-    if (!generoId) {
-        carregarTendenciasGeral();
-        return;
-    }
-
-    let endpoint = "movie";
-
-    if (tipo === "serie") {
-        endpoint = "tv";
-    }
-
-    const url = `${BASE_URL}/discover/${endpoint}?api_key=${API_KEY}&with_genres=${generoId}&language=pt-BR`;
-    requisicaoURL(url);
+    aplicarFiltros();
 }
 
 function carregarAnos() {
@@ -95,51 +81,25 @@ function carregarAnos() {
 }
 
 function filtrarPorAno() {
-    const ano = document.getElementById("filtroAno").value;
-
-    if (!ano) {
-        carregarTendenciasGeral();
-        return;
-    }
-
-    let endpoint = "movie";
-
-    if (tipo === "serie") {
-        endpoint = "tv";
-    }
-
-    const url = `${BASE_URL}/discover/${endpoint}?api_key=${API_KEY}&language=pt-BR&primary_release_year=${ano}`;
-    requisicaoURL(url);
+    aplicarFiltros();
 }
 
 function filtrarPorNota() {
-    const nota = document.getElementById("filtroNota").value;
-
-    if (!nota) {
-        carregarTendenciasGeral();
-        return;
-    }
-
-    let endpoint = "movie";
-
-    if (tipo === "serie") {
-        endpoint = "tv";
-    }
-
-    const url = `${BASE_URL}/discover/${endpoint}?api_key=${API_KEY}&language=pt-BR&vote_average.gte=${nota}`;
-    requisicaoURL(url);
+    aplicarFiltros();
 }
 
 function filtrarPorPais() {
+    aplicarFiltros();
+}
+
+/* FUNÇÃO QUE ENCADEIA TODOS OS FILTROS */
+
+function aplicarFiltros() {
+
+    const genero = document.getElementById("filtroGenero").value;
+    const ano = document.getElementById("filtroAno").value;
+    const nota = document.getElementById("filtroNota").value;
     const pais = document.getElementById("filtroPais").value;
-
-    if (!pais) {
-        carregarTendenciasGeral();
-        return;
-    }
-
-    const params = new URLSearchParams(window.location.search);
-    const tipo = params.get("tipo");
 
     let endpoint = "movie";
 
@@ -147,7 +107,24 @@ function filtrarPorPais() {
         endpoint = "tv";
     }
 
-    const url = `${BASE_URL}/discover/${endpoint}?api_key=${API_KEY}&language=pt-BR&with_origin_country=${pais}`;
+    let url = `${BASE_URL}/discover/${endpoint}?api_key=${API_KEY}&language=pt-BR`;
+
+    if (genero) {
+        url += `&with_genres=${genero}`;
+    }
+
+    if (ano) {
+        url += `&primary_release_year=${ano}`;
+    }
+
+    if (nota) {
+        url += `&vote_average.gte=${nota}`;
+    }
+
+    if (pais) {
+        url += `&with_origin_country=${pais}`;
+    }
+
     requisicaoURL(url);
 }
 
@@ -246,9 +223,8 @@ inicio.addEventListener("click", carregarTendenciasGeral);
 filmes.addEventListener("click", buscarFilme);
 series.addEventListener("click", buscarSerie);
 
-/* LOADER */
-
 document.addEventListener("DOMContentLoaded", () => {
+
     const params = new URLSearchParams(window.location.search);
     const tipo = params.get("tipo");
 
@@ -261,21 +237,22 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     carregarGeneros();
-
-    document.getElementById("filtroGenero")
-        .addEventListener("change", filtrarPorGenero);
-
     carregarAnos();
 
+    document.getElementById("filtroGenero")
+        .addEventListener("change", aplicarFiltros);
+
     document.getElementById("filtroAno")
-        .addEventListener("change", filtrarPorAno);
+        .addEventListener("change", aplicarFiltros);
 
     document.getElementById("filtroNota")
-        .addEventListener("change", filtrarPorNota);
+        .addEventListener("change", aplicarFiltros);
 
     document.getElementById("filtroPais")
-        .addEventListener("change", filtrarPorPais);
+        .addEventListener("change", aplicarFiltros);
 });
+
+/* LOADER */
 
 window.addEventListener("load", function () {
     const loader = document.getElementById("loader");
