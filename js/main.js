@@ -13,8 +13,21 @@ const tipo = params.get("tipo");
 
 const botaoTema = document.getElementById("botaoTema");
 
+
+const temaSalvo = localStorage.getItem("tema");
+
+if (temaSalvo === "escuro") {
+    document.body.classList.add("tema-escuro");
+}
+
 botaoTema.addEventListener("click", () => {
     document.body.classList.toggle("tema-escuro");
+
+    if (document.body.classList.contains("tema-escuro")) {
+        localStorage.setItem("tema", "escuro");
+    } else {
+        localStorage.setItem("tema", "claro");
+    }
 });
 
 async function requisicaoURL(url) {
@@ -92,7 +105,7 @@ function filtrarPorPais() {
     aplicarFiltros();
 }
 
-/* FUNÇÃO QUE ENCADEIA TODOS OS FILTROS */
+/* ENCADEAMENTO */
 
 function aplicarFiltros() {
 
